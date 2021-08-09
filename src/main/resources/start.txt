@@ -14,3 +14,9 @@ git add // все файлы
 git add file.txt // конкретный файл
 11) git commit -m "your comment"
 12) git push origin master
+
+13) Настройка, удаление: https://dashboard.heroku.com/apps
+
+Там можно переименовать приложение.
+14) git remote -v // Посмотреть ветки (heroku https://git.heroku.com/oldName.git)
+15) git remote set-url heroku https://git.heroku.com/newName.git
