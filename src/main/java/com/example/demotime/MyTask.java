@@ -21,7 +21,7 @@ public class MyTask {
 
     @Scheduled(fixedRate = 60000)
     public void CurrentTime() throws Exception {
-        doc = Jsoup.connect("https://www.bbc.com/").get();
+        doc = Jsoup.connect("https://www.sports.ru/").get();
         times = dtf.format(LocalDateTime.now(ZoneId.of("Europe/Moscow")));
         System.out.println("Now: " + times);
     }
