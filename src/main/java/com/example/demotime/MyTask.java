@@ -21,13 +21,13 @@ public class MyTask {
     public Document doc;
     public String times;
 
-    @Scheduled(fixedRate = 60000)
+    @Scheduled(fixedRate = 600000)
     public void CurrentTime() throws Exception {
-//        System.setProperty("webdriver.chrome.driver", "./src/main/resources/chromedriver");
-//        WebDriver driver = new ChromeDriver();
-//        driver.get("https://www.marathonbet.ru/su/popular/Football/France/Ligue+1+-+21533");
-//        Document doc = Jsoup.parse(driver.getPageSource());
-        doc = Jsoup.connect("https://www.marathonbet.ru/su/popular/Football/France/Ligue+1+-+21533").get();
+        System.setProperty("webdriver.chrome.driver", "./src/main/resources/chromedriver");
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://www.marathonbet.ru/su/popular/Football/France/Ligue+1+-+21533");
+        doc = Jsoup.parse(driver.getPageSource());
+//        doc = Jsoup.connect("https://www.marathonbet.ru/su/popular/Football/France/Ligue+1+-+21533").get();
         times = dtf.format(LocalDateTime.now(ZoneId.of("Europe/Moscow")));
         System.out.println("Now: " + times);
     }
