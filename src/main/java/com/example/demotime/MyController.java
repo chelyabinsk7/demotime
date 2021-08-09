@@ -12,6 +12,6 @@ public class MyController {
 
     @GetMapping
     public String getTime() {
-        return myTask.times + "<br>" + myTask.doc.text();
+        return myTask.times + "<br>" + myTask.doc.body().text();
     }
 }
