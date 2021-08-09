@@ -13,6 +13,6 @@ public class MyController {
     @GetMapping
     public String getTime() {
         String time = myTask.times;
-        return time;
+        return "Time is: " + time;
     }
 }
