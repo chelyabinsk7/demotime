@@ -1,0 +1,16 @@
+1) Создать ключ в C:\Users\Евгений\.ssh
+2) ssh-keygen -t rsa
+3) Добавить содержимое файла id_rsa.pub как ssh-ключ
+4) Перейти в папку с проектом
+5) heroku login
+6) heroku create
+7) git push heroku master
+8) 
+heroku maintenance:on // остановить
+heroku maintenance:off // запустить
+9) Изменть/добавить файлы
+10) 
+git add // все файлы
+git add file.txt // конкретный файл
+11) git commit -m "your comment"
+12) git push origin master
