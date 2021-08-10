@@ -4,6 +4,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -24,11 +25,44 @@ public class MyTask {
     @Scheduled(fixedRate = 600000)
     public void CurrentTime() throws Exception {
         System.setProperty("webdriver.chrome.driver", "./src/main/resources/chromedriver");
-        WebDriver driver = new ChromeDriver();
+//        WebDriver driver = new ChromeDriver();
+        WebDriver driver = launchBrowser();
         driver.get("https://www.marathonbet.ru/su/popular/Football/France/Ligue+1+-+21533");
         doc = Jsoup.parse(driver.getPageSource());
 //        doc = Jsoup.connect("https://www.marathonbet.ru/su/popular/Football/France/Ligue+1+-+21533").get();
         times = dtf.format(LocalDateTime.now(ZoneId.of("Europe/Moscow")));
-        System.out.println("Now: " + times);
+//        System.out.println("Now: " + times);
+    }
+
+    public WebDriver launchBrowser(){
+//        String driverPath="";
+//        if(getOS().equals(OS.WINDOWS)){
+//            driverPath="agent//chromedriver.exe";
+//        }else if(getOS().equals(OS.LINUX)){
+//            driverPath="agent//chromedriver";
+//        }
+        String driverPath="agent//chromedriver.exe";
+
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        options.addArguments("window-size=1200x600");
+//        if(getOS().equals(OS.LINUX)){
+//            try{   //GOOGLE_CHROME_SHIM GOOGLE_CHROME_BIN
+//                String binaryPath=EnvironmentUtils.getProcEnvironment().get("GOOGLE_CHROME_SHIM");
+//                System.out.println("Path: "+binaryPath);
+//                options.setBinary(binaryPath);
+//                options.addArguments("--disable-gpu");
+//                options.addArguments("--no-sandbox");
+//            }catch(Exception e){
+//
+//            }
+//        }
+
+//        System.out.println("Driver Path: "+driverPath);
+
+        System.setProperty("webdriver.chrome.driver", driverPath);
+        WebDriver driver=new ChromeDriver(options);
+
+        return driver;
     }
 }
