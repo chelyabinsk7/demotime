@@ -3,6 +3,7 @@ package com.example.demotime;
 import org.apache.commons.exec.environment.EnvironmentUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -20,28 +21,29 @@ public class MyTask {
 
     private final static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss dd.MM.yyyy ");
 
-    public Document doc;
+//    public Document doc;
     public String times;
 
-    @Scheduled(fixedRate = 600000)
+    @Scheduled(fixedRate = 3000)
     public void CurrentTime() throws Exception {
 //        System.setProperty("webdriver.chrome.driver", "./src/main/resources/chromedriver");
 //        WebDriver driver = new ChromeDriver();
-        WebDriver driver = launchBrowser();
-        driver.get("https://www.marathonbet.ru/su/popular/Football/France/Ligue+1+-+21533");
-        doc = Jsoup.parse(driver.getPageSource());
+//        WebDriver driver = launchBrowser();
+//        driver.get("https://www.marathonbet.ru/su/popular/Football/France/Ligue+1+-+21533");
+//        doc = Jsoup.parse(driver.getPageSource());
 //        doc = Jsoup.connect("https://www.marathonbet.ru/su/popular/Football/France/Ligue+1+-+21533").get();
         times = dtf.format(LocalDateTime.now(ZoneId.of("Europe/Moscow")));
-//        System.out.println("Now: " + times);
+        System.out.println(Platform.getCurrent());
+        System.out.println("Now: " + times);
     }
 
-    public WebDriver launchBrowser(){
-        String driverPath="agent//chromedriver.exe";
-            System.setProperty("webdriver.chrome.driver", driverPath);
-
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
-        options.addArguments("window-size=1200x600");
+//    public WebDriver launchBrowser(){
+//        String driverPath="agent//chromedriver.exe";
+//            System.setProperty("webdriver.chrome.driver", driverPath);
+//
+//        ChromeOptions options = new ChromeOptions();
+//        options.addArguments("--headless");
+//        options.addArguments("window-size=1200x600");
 //        if(getOS().equals(OS.LINUX)){
 //            try{   //GOOGLE_CHROME_SHIM GOOGLE_CHROME_BIN
 //                String binaryPath= EnvironmentUtils.getProcEnvironment().get("GOOGLE_CHROME_SHIM");
@@ -54,8 +56,8 @@ public class MyTask {
 //            }
 //        }
 
-        WebDriver driver=new ChromeDriver(options);
-
-        return driver;
-    }
+//        WebDriver driver=new ChromeDriver(options);
+//
+//        return driver;
+//    }
 }

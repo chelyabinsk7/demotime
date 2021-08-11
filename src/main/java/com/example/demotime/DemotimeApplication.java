@@ -8,6 +8,7 @@ public class DemotimeApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(DemotimeApplication.class, args);
+        System.out.println("1111");
     }
 
 }
