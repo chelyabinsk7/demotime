@@ -11,6 +11,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.io.File;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -24,19 +25,24 @@ public class MyTask {
     public Document doc;
     public String times;
 
+
+    @Scheduled(fixedRate = 5000)
+    public void dvdsv() {
+        System.out.println(new File("./src/main/resources/bins/list.bin").isFile() + " MAC");
+        System.out.println(new File("~/src/main/resources/bins/list.bin").isFile() + " LINUX");
+        System.out.println("=======================");
+    }
+
 //    @Scheduled(fixedRate = 20000)
-    public void currentTime() throws Exception {
-//        System.setProperty("webdriver.chrome.driver", "./src/main/resources/chromedriver");
-//        WebDriver driver = new ChromeDriver();
-        WebDriver driver = launchBrowser();
-        driver.get("https://www.marathonbet.ru/su/popular/Football/France/Ligue+1+-+21533");
+    public void titleGoogle() throws Exception {
+        System.setProperty("webdriver.chrome.driver", "./src/main/resources/chromedriver");
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://www.google.com");
         doc = Jsoup.parse(driver.getPageSource());
-        times = dtf.format(LocalDateTime.now(ZoneId.of("Europe/Moscow")));
-        System.out.println(Platform.getCurrent().is(Platform.MAC));
-        System.out.println("Now: " + times);
         System.out.println(doc.title());
         driver.close();
     }
+
     public WebDriver launchBrowser(){
         System.out.println("==================START");
         String driverPath="";

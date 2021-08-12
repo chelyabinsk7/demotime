@@ -13,7 +13,7 @@ public class MyController {
 
     @GetMapping
     public String getTime() throws Exception {
-        myTask.currentTime();
+//        myTask.currentTime();
         return myTask.times + "<br>" + Platform.getCurrent() + "<br>" + myTask.doc.title();
     }
 }
