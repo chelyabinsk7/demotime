@@ -12,6 +12,8 @@ public class DemotimeApplication {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         SpringApplication.run(DemotimeApplication.class, args);
+        System.out.println(new File("./src/main/resources/bins/list.bin").isFile() + " MAC");
+        System.out.println(new File("~/src/main/resources/bins/list.bin").isFile() + " LINUX");
         System.out.println("1111");
 
         List<String> list = new ArrayList<>();
